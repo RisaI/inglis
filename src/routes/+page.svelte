@@ -15,14 +15,21 @@
 
         output = data.text;
     }
+
+    function hotkey(e: KeyboardEvent) {
+        if (e.ctrlKey && e.key === 'Enter') {
+            translate();
+        }
+    }
 </script>
 
 <main class="container">
     <h1>Ingliš</h1>
     <form on:submit={e => { e.preventDefault(); translate(); }}>
-        <textarea rows="10" bind:value={input} />
+        <textarea rows="10" bind:value={input} on:keypress={hotkey} />
         <div class="center">
             <button type="submit">Přeložit</button>
+            <small> nebo Ctrl+Enter</small>
         </div>
     </form>
     <textarea rows="10" readonly class="output" value={output} />
@@ -30,17 +37,41 @@
 
 <style>
     :global(body) {
-        margin: 0;
+        margin: 0 0.5em;
+        color: #0f3b40;
+    }
+
+    :global(*) {
+        box-sizing: border-box;
     }
 
     textarea {
         width: 100%;
         resize: vertical;
+        color: inherit;
+        outline: none;
+
+        padding: 1em;
+        border-radius: 0.75em;
+        border-color: #d6f4f6;
     }
 
     .center {
-        margin-inline: auto;
+        margin: 1em auto;
         width: fit-content;
+    }
+
+    button {
+        background: none;
+        outline: none;
+
+        color: #1d777f;
+        border: 2px solid #1d777f;
+        border-radius: 1em;
+        padding: 1em;
+
+        font-weight: bold;
+        cursor: pointer;
     }
 
     .container {
@@ -49,6 +80,6 @@
     }
 
     .output {
-        margin-top: 1em;
+        background-color: #eaf9fb;
     }
 </style>
