@@ -20,6 +20,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Foneticky.cz</title>
+</svelte:head>
+
 <main class="container">
 	<h1>Foneticky, zato dokonale</h1>
 	<form
