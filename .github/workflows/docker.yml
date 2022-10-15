@@ -21,4 +21,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/RisaI/inglis:latest
+          tags: ghcr.io/risai/inglis:latest
