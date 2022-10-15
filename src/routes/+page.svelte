@@ -1,4 +1,6 @@
 <script lang="ts">
+    import "@fontsource/nunito-sans";
+
     let input: string = '';
     let output: string = '';
 
@@ -24,7 +26,7 @@
 </script>
 
 <main class="container">
-    <h1>Ingliš</h1>
+    <h1>Foneticky, zato dokonale</h1>
     <form on:submit={e => { e.preventDefault(); translate(); }}>
         <textarea rows="10" bind:value={input} on:keypress={hotkey} />
         <div class="center">
@@ -39,6 +41,7 @@
     :global(body) {
         margin: 0 0.5em;
         color: #0f3b40;
+        font-family: "Nunito Sans", sans-serif;
     }
 
     :global(*) {
@@ -81,5 +84,9 @@
 
     .output {
         background-color: #eaf9fb;
+    }
+
+    h1 {
+        
     }
 </style>
