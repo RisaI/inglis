@@ -16,9 +16,7 @@
 	}
 
 	function hotkey(e: KeyboardEvent) {
-		if (e.ctrlKey && e.key === 'Enter') {
-			translate();
-		}
+		if (e.ctrlKey && e.key === 'Enter') translate();
 	}
 </script>
 
@@ -33,7 +31,7 @@
 		<textarea rows="10" bind:value={input} on:keypress={hotkey} />
 		<div class="center">
 			<button type="submit">Přeložit</button>
-			<small> nebo Ctrl+Enter</small>
+			<small class="key-hint"> nebo Ctrl+Enter</small>
 		</div>
 	</form>
 	<textarea rows="10" readonly class="output" value={output} />
@@ -61,9 +59,27 @@
 		border-color: #d6f4f6;
 	}
 
+	::-webkit-scrollbar {
+		background: none;
+		width: 8px;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: #c1eef2;
+		border-radius: 4px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background-color: #83dde5;
+	}
+
 	.center {
 		margin: 1em auto;
 		width: fit-content;
+	}
+
+	@media screen and (max-width: 767px) {
+		.key-hint {
+			display: none;
+		}
 	}
 
 	button {

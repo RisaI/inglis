@@ -60,12 +60,17 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	// Prelozeni
 	let text = data
-		.split(' ')
-		.map((w) => {
-			const [pre, word, suf] = splitMarks(w.toLowerCase());
-			return pre + (dictionary[word] ?? word) + suf;
-		})
-		.join(' ');
+		.split('\n')
+		.map((line) =>
+			line
+				.split(' ')
+				.map((w) => {
+					const [pre, word, suf] = splitMarks(w.toLowerCase());
+					return pre + (dictionary[word] ?? word) + suf;
+				})
+				.join(' ')
+		)
+		.join('\n');
 
 	return json({ text });
 };
