@@ -1,92 +1,98 @@
 <script lang="ts">
-    import "@fontsource/nunito-sans";
+	import '@fontsource/nunito-sans';
 
-    let input: string = '';
-    let output: string = '';
+	let input: string = '';
+	let output: string = '';
 
-    async function translate() {
-        let response = await fetch(
-            '/translate',
-            {
-                method: 'POST',
-                body: input
-            }
-        );
+	async function translate() {
+		let response = await fetch('/translate', {
+			method: 'POST',
+			body: input
+		});
 
-        let data: { text: string } = await response.json();
+		let data: { text: string } = await response.json();
 
-        output = data.text;
-    }
+		output = data.text;
+	}
 
-    function hotkey(e: KeyboardEvent) {
-        if (e.ctrlKey && e.key === 'Enter') {
-            translate();
-        }
-    }
+	function hotkey(e: KeyboardEvent) {
+		if (e.ctrlKey && e.key === 'Enter') {
+			translate();
+		}
+	}
 </script>
 
 <main class="container">
-    <h1>Foneticky, zato dokonale</h1>
-    <form on:submit={e => { e.preventDefault(); translate(); }}>
-        <textarea rows="10" bind:value={input} on:keypress={hotkey} />
-        <div class="center">
-            <button type="submit">Přeložit</button>
-            <small> nebo Ctrl+Enter</small>
-        </div>
-    </form>
-    <textarea rows="10" readonly class="output" value={output} />
+	<h1>Foneticky, zato dokonale</h1>
+	<form
+		on:submit={(e) => {
+			e.preventDefault();
+			translate();
+		}}
+	>
+		<textarea rows="10" bind:value={input} on:keypress={hotkey} />
+		<div class="center">
+			<button type="submit">Přeložit</button>
+			<small> nebo Ctrl+Enter</small>
+		</div>
+	</form>
+	<textarea rows="10" readonly class="output" value={output} />
 </main>
 
 <style>
-    :global(body) {
-        margin: 0 0.5em;
-        color: #0f3b40;
-        font-family: "Nunito Sans", sans-serif;
-    }
+	:global(body) {
+		margin: 0 0.5em;
+		color: #0f3b40;
+		font-family: 'Nunito Sans', sans-serif;
+	}
 
-    :global(*) {
-        box-sizing: border-box;
-    }
+	:global(*) {
+		box-sizing: border-box;
+	}
 
-    textarea {
-        width: 100%;
-        resize: vertical;
-        color: inherit;
-        outline: none;
+	textarea {
+		width: 100%;
+		resize: vertical;
+		color: inherit;
+		outline: none;
 
-        padding: 1em;
-        border-radius: 0.75em;
-        border-color: #d6f4f6;
-    }
+		padding: 1em;
+		border-radius: 0.75em;
+		border-color: #d6f4f6;
+	}
 
-    .center {
-        margin: 1em auto;
-        width: fit-content;
-    }
+	.center {
+		margin: 1em auto;
+		width: fit-content;
+	}
 
-    button {
-        background: none;
-        outline: none;
+	button {
+		background: none;
+		outline: none;
 
-        color: #1d777f;
-        border: 2px solid #1d777f;
-        border-radius: 1em;
-        padding: 1em;
+		color: #1d777f;
+		border: 2px solid #1d777f;
+		border-radius: 1em;
+		padding: 1em;
 
-        font-weight: bold;
-        cursor: pointer;
-    }
+		font-weight: bold;
+		cursor: pointer;
 
-    .container {
-        margin-inline: auto;
-        max-width: 1000px;
-    }
+		transition: all 0.1s ease;
+		-webkit-font-smoothing: subpixel-antialiased;
+	}
 
-    .output {
-        background-color: #eaf9fb;
-    }
+	button:hover {
+		transform: scale(1.025);
+		box-shadow: 1px 3px 5px #0f3b4055;
+	}
 
-    h1 {
-        
-    }
+	.container {
+		margin-inline: auto;
+		max-width: 1000px;
+	}
+
+	.output {
+		background-color: #eaf9fb;
+	}
 </style>
