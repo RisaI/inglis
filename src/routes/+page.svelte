@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '@fontsource/nunito-sans';
+	import '../app.css';
 
 	let input: string = '';
 	let output: string = '';
@@ -25,7 +26,7 @@
 </svelte:head>
 
 <main class="container">
-	<h1>Foneticky, zato dokonale</h1>
+	<h1>Foneticky!</h1>
 	<form
 		on:submit={(e) => {
 			e.preventDefault();
@@ -42,16 +43,6 @@
 </main>
 
 <style>
-	:global(body) {
-		margin: 0 0.5em;
-		color: #0f3b40;
-		font-family: 'Nunito Sans', sans-serif;
-	}
-
-	:global(*) {
-		box-sizing: border-box;
-	}
-
 	textarea {
 		width: 100%;
 		resize: vertical;
@@ -61,18 +52,6 @@
 		padding: 1em;
 		border-radius: 0.75em;
 		border-color: #d6f4f6;
-	}
-
-	::-webkit-scrollbar {
-		background: none;
-		width: 8px;
-	}
-	::-webkit-scrollbar-thumb {
-		background-color: #c1eef2;
-		border-radius: 4px;
-	}
-	::-webkit-scrollbar-thumb:hover {
-		background-color: #83dde5;
 	}
 
 	.center {

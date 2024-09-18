@@ -1,12 +1,12 @@
-FROM node:18-alpine as build
+FROM node:22-alpine AS build
+RUN corepack enable
 WORKDIR /app
-RUN apk update && apk add yarn git curl build-base
 COPY static/ ./static/
-COPY [ "cmudict.txt", "package.json", "svelte.config.js", "tsconfig.json", "vite.config.ts", "yarn.lock", "./" ]
+COPY [ "cmudict.txt", "package.json", "svelte.config.js", "tsconfig.json", "vite.config.ts", "pnpm-lock.yaml", "./" ]
 COPY src/ ./src/
-RUN yarn && yarn build
+RUN pnpm i && pnpm build
 
-FROM node:18-alpine as run
+FROM node:22-alpine AS run
 WORKDIR /app
 COPY [ "cmudict.txt", "package.json", "./" ]
 COPY --from=build /app/build/ .

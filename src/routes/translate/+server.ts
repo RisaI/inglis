@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
-import { readFileSync } from 'fs';
-import type { RequestHandler } from './$types';
+import { readFileSync } from 'node:fs';
 import { CMUSyllableMap } from './cmu';
+import type { RequestHandler } from './$types';
 
 const [fromChar, toChar] = ['A'.charCodeAt(0), 'Z'.charCodeAt(0)];
 

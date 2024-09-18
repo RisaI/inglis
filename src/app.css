@@ -1,0 +1,21 @@
+body {
+    margin: 0 0.5em;
+    color: #0f3b40;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    background: none;
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #c1eef2;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #83dde5;
+}
